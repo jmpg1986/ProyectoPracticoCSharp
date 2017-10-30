@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AppGameCenter
 {
-    public class Rankings
+    public class Ranking
     {
         //declarando members
         #region Members
@@ -32,23 +32,29 @@ namespace AppGameCenter
 
         #region Constructors & equals
 
-        public Rankings(string name, List<Score> scores)
+        public override string ToString()
+        {
+            string res = "";
+            res = string.Format("Ranking:{0}\n", this.Name);
+            for (int i = 0; i < Scores.Count; i++)
+            {
+                res += string.Format("{0}.{1}\n", Scores[i].ToString());
+            }
+            return res;
+        }
+
+        
+        public Ranking(string name, List<Score> scores)
         {
             this.name = name;
             this.scores = scores;
         }
-
-        public override string ToString()
+        public Ranking()
         {
-            string s = "Ranking: " + Name;
-            string k = Score.Nickname + Score.Points;
-            foreach (Score score in scores)
-            {
-                k += 
-            }
-            
+            this.name = "";
+            this.scores = null;
         }
-
-        #endregion  
+        
+        #endregion
     }
 }

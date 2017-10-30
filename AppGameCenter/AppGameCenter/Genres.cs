@@ -8,7 +8,7 @@
         Puzzles = 3,
         Adventure = 4,
         Simulation = 5,
-        Survival Horror = 6,
+        Survival_Horror = 6,
         Sandbox = 7
     }
 }

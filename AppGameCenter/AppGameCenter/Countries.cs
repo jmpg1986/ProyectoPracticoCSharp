@@ -5,7 +5,7 @@
         Spain = 0,
         France = 1,
         USA = 2,
-        United Kingdom = 3,
+        United_Kingdom = 3,
         Japan = 4,
         Italy = 5,
         Brazil = 6,

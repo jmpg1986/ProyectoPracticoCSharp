@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 namespace AppGameCenter
 {
+
+
     public class Game
     {
-
-        //declaro los miembros de la clase Game
-        #region Members
-
         private string name;
 
         public string Name
         {
-            get { return name; }
+            get { return this.name; }
         }
 
-        private Genres genres;
+        private Genres genre;
 
-        public Genres Genres
+        public Genres Genre
         {
-            get { return genres; }
+            get { return genre; }
         }
 
         private List<Platforms> platforms;
@@ -30,61 +30,75 @@ namespace AppGameCenter
             get { return platforms; }
         }
 
-        private int releasedate;
+        private int releaseDate;
 
-        public int Releasedate
+        public int ReleaseDate
         {
-            get { return releasedate; }
+            get { return this.releaseDate; }
         }
 
-        private Dictionary<List<Platforms>, List<Score>> rankings;
+        private Dictionary<Platforms, Ranking> rankings;
 
-        public Dictionary<List<Platforms>, List<Score>> Rankings
+
+        public Dictionary<Platforms, Ranking> Rankings
         {
-            get { return rankings; }
+            get { return this.rankings; }
         }
 
-        #endregion
 
-        //Constructores & Equals
-        #region Constructors & equals
-
-        public Game(string name, int releasedate, List<Platforms> platforms, Genres genres, Dictionary<List<Platforms>, List<Score>> rankings)
-        {
-            this.name = name;
-            if (releasedate > 1980 && releasedate < 2018)
-            {
-                this.releasedate = releasedate;
-            }
-            else
-            {
-                this.releasedate = 0000;
-            }
-            this.platforms = platforms;
-            this.genres = genres;
-            this.rankings = rankings;
-        }
-
+        //criterio de Igualdad
         public override bool Equals(object obj)
         {
-            if (obj is Game aux)
+            bool r = false;
+            if (obj is Game)
             {
-                return this.name == aux.name;
+                Game g = (Game)obj;
+                r = g.name == this.Name;
             }
-            else
-            {
-                return false;
-            }
+            return r;
         }
+
+        //Cadena de texto
 
         public override string ToString()
         {
-            string s = "---" + Name + "(" + Releasedate + ") - " + Platforms + " - " + Genres + " ---\n" + "Rankings:\n";
+            string s = "";
+            s = string.Format("---{0}({1}-)", this.Name, this.ReleaseDate);
+            foreach (Platforms plataform in this.Platforms)
+            {
+                s += string.Format("{0},", plataform);
+            }
+            s += string.Format("-{0}---", this.Genre);
+            foreach (Platforms ranking in this.Rankings.Keys)
+            {
+                s += string.Format("-{0}({1})", this.Rankings[ranking].Name, this.Rankings[ranking].Scores.Count);
+            }
             return s;
         }
 
 
 
+
+        #region Constructores
+        public Game(string name, Genres genre, List<Platforms> plataforms, int releaseDate, Dictionary<Platforms, Ranking> rankings)
+        {
+            this.name = name;
+            this.genre = genre;
+            this.platforms = plataforms;
+            if (releaseDate >= 1980 && releaseDate <= 2018)
+            {
+                this.releaseDate = releaseDate;
+            }
+            else
+            {
+                System.Console.WriteLine("La fecha no entra en el rango de valores [1980-2018]");
+
+            }
+
+            this.rankings = rankings;
+        }
+
         #endregion
+
     }
 }

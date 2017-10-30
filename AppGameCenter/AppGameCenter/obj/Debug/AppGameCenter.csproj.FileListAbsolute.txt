@@ -1,0 +1,2 @@
+E:\repositorios\ProyectoPracticoCSharp\AppGameCenter\AppGameCenter\obj\Debug\AppGameCenter.csprojResolveAssemblyReference.cache
+E:\repositorios\ProyectoPracticoCSharp\AppGameCenter\AppGameCenter\obj\Debug\AppGameCenter.csproj.CoreCompileInputs.cache

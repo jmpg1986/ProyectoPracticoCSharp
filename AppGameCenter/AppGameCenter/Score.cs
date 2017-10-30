@@ -26,27 +26,34 @@ namespace AppGameCenter
         }
         #endregion
 
-        //Constructores y equals
+        #region Constructores y equals
 
-        #region Constructors & equals
         
-        public Score()
+
+
+        public Score(string nickname, string email, Countries country, int points)
         {
-            this.nickname = "unknown";
-            this.points = 0;
+            this.points = points;
         }
-        
-        public Score(string nickname, int points)
+
+        public Score() : base()
         {
-            this.nickname = nickname;
+
+        }
+
+        public Score(Player player1, int points)
+        {
+
             this.points = points;
         }
 
         public override string ToString()
         {
-            string s = Nickname + " - " + Points;
-            return s;
+            string res = "";
+            res = string.Format("{0}-{1}", this.Nickname, this.Points);
+            return res;
         }
+        
         #endregion
 
     }

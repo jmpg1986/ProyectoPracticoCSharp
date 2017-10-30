@@ -1,4 +1,10 @@
-﻿namespace AppGameCenter
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AppGameCenter
 {
     public class Player
     {
@@ -52,8 +58,8 @@
         {
             if (obj is Player)
             {
-                Player aux = (Player)obj;
-                return this.nickname == aux.nickname;
+                Player other = (Player)obj;
+                return this.nickname == other.nickname;
             }
             else
             {
